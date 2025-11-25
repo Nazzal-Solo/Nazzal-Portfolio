@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Coming Soon",
+    "description": "",
+    "image": "/images/coming-soon.svg",
+    "technologies": [],
+    "liveUrl": null,
+    "githubUrl": null,
+    "category": "Full-Stack",
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": 2,
+    "title": "Coming Soon",
+    "description": "",
+    "image": "/images/coming-soon.svg",
+    "technologies": [],
+    "liveUrl": null,
+    "githubUrl": null,
+    "category": "Full-Stack",
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": 3,
+    "title": "Coming Soon",
+    "description": "",
+    "image": "/images/coming-soon.svg",
+    "technologies": [],
+    "liveUrl": null,
+    "githubUrl": null,
+    "category": "Frontend",
+    "featured": false,
+    "comingSoon": true
+  },
+  {
+    "id": 4,
+    "title": "Coming Soon",
+    "description": "",
+    "image": "/images/coming-soon.svg",
+    "technologies": [],
+    "liveUrl": null,
+    "githubUrl": null,
+    "category": "Backend",
+    "featured": false,
+    "comingSoon": true
+  },
+  {
+    "id": 5,
+    "title": "Coming Soon",
+    "description": "",
+    "image": "/images/coming-soon.svg",
+    "technologies": [],
+    "liveUrl": null,
+    "githubUrl": null,
+    "category": "Full-Stack",
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": 6,
+    "title": "Coming Soon",
+    "description": "",
+    "image": "/images/coming-soon.svg",
+    "technologies": [],
+    "liveUrl": null,
+    "githubUrl": null,
+    "category": "Frontend",
+    "featured": false,
+    "comingSoon": true
+  }
+]
