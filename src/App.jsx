@@ -6,11 +6,14 @@ import Footer from "./components/Footer";
 import GlobalLoader from "./components/GlobalLoader";
 import PerformanceSelectionModal from "./components/PerformanceSelectionModal";
 import PageLoader from "./components/PageLoader";
+import ScrollToTop from "./components/ScrollToTop";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { usePageLoader } from "./hooks/usePageLoader";
 import {
   PerformanceProvider,
   usePerformance,
 } from "./contexts/PerformanceContext";
+import { CursorProvider } from "./contexts/CursorContext";
 
 // Lazy load pages for better performance
 const Home = lazy(() => import("./pages/Home"));
@@ -49,36 +52,40 @@ const AppContent = () => {
   return (
     <PageLoader isLoading={isLoading}>
       <div className="min-h-screen flex flex-col">
+        <ScrollToTop />
         <Header />
 
         <main className="flex-1">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense
-                fallback={
-                  <div className="min-h-screen flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-                  </div>
-                }
+          <ErrorBoundary>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={location.pathname}
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+                style={{ minHeight: "100%", opacity: 1 }}
               >
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/blog/:id" element={<BlogPost />} />
-                </Routes>
-              </Suspense>
-            </motion.div>
-          </AnimatePresence>
+                <Suspense
+                  fallback={
+                    <div className="min-h-screen flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                    </div>
+                  }
+                >
+                  <Routes location={location}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:id" element={<BlogPost />} />
+                  </Routes>
+                </Suspense>
+              </motion.div>
+            </AnimatePresence>
+          </ErrorBoundary>
         </main>
 
         <Footer />
@@ -96,7 +103,9 @@ const AppContent = () => {
 const App = () => {
   return (
     <PerformanceProvider>
-      <AppContent />
+      <CursorProvider>
+        <AppContent />
+      </CursorProvider>
     </PerformanceProvider>
   );
 };

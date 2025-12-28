@@ -1,74 +1,62 @@
 [
   {
     "id": 1,
-    "title": "Coming Soon",
-    "description": "",
-    "image": "/images/coming-soon.svg",
-    "technologies": [],
+    "title": "Automated Grading & Code Evaluation Platform",
+    "description": "Automated grading platform that downloads student GitHub repos, runs configuration-driven grading logic, and shows real-time results/analytics across cohorts.",
+    "image": "/images/grading-automation.png",
+    "technologies": ["Node.js", "Express.js", "JavaScript", "GitHub API", "JSON"],
     "liveUrl": null,
-    "githubUrl": null,
+    "githubUrl": "https://github.com/Nazzal-Solo/grading-automation-system",
     "category": "Full-Stack",
     "featured": true,
-    "comingSoon": true
+    "comingSoon": false
   },
   {
     "id": 2,
-    "title": "Coming Soon",
-    "description": "",
-    "image": "/images/coming-soon.svg",
-    "technologies": [],
+    "title": "Talents Media — Social & Job Automation Platform",
+    "description": "Full-stack platform combining social media features with job application automation workflows (auth, real-time interactions, feed logic, job matching foundations).",
+    "image": "/images/talents-media.png",
+    "technologies": ["React", "TypeScript", "Node.js", "Express.js", "PostgreSQL", "Socket.IO"],
     "liveUrl": null,
-    "githubUrl": null,
+    "githubUrl": "https://github.com/Nazzal-Solo/talents_media-SocialMedia",
     "category": "Full-Stack",
     "featured": true,
-    "comingSoon": true
+    "comingSoon": false
   },
   {
     "id": 3,
-    "title": "Coming Soon",
-    "description": "",
-    "image": "/images/coming-soon.svg",
-    "technologies": [],
-    "liveUrl": null,
+    "title": "UI Hub — Internal Multi-Project Dashboard",
+    "description": "Internal UI hub aggregating multiple projects into a single dashboard; built under tight delivery timelines.",
+    "image": "/images/ui-hub.png",
+    "technologies": ["JavaScript", "HTML", "CSS"],
+    "liveUrl": "https://vibecoding-ui.netlify.app",
     "githubUrl": null,
     "category": "Frontend",
     "featured": false,
-    "comingSoon": true
+    "comingSoon": false
   },
   {
     "id": 4,
-    "title": "Coming Soon",
-    "description": "",
-    "image": "/images/coming-soon.svg",
-    "technologies": [],
-    "liveUrl": null,
-    "githubUrl": null,
-    "category": "Backend",
-    "featured": false,
-    "comingSoon": true
+    "title": "Nuclear Physics Learning Platform",
+    "description": "Interactive learning web app for nuclear physics concepts & equations with animations and KaTeX rendering.",
+    "image": "/images/nuclear-physics.png",
+    "technologies": ["React", "TypeScript", "Vite", "Framer Motion", "KaTeX"],
+    "liveUrl": "https://nuclearphysics.netlify.app",
+    "githubUrl": "https://github.com/ahmednazzall/Nuclear-Physics-App",
+    "category": "Frontend",
+    "featured": true,
+    "comingSoon": false
   },
   {
     "id": 5,
-    "title": "Coming Soon",
-    "description": "",
-    "image": "/images/coming-soon.svg",
-    "technologies": [],
-    "liveUrl": null,
-    "githubUrl": null,
-    "category": "Full-Stack",
-    "featured": true,
-    "comingSoon": true
-  },
-  {
-    "id": 6,
-    "title": "Coming Soon",
-    "description": "",
-    "image": "/images/coming-soon.svg",
-    "technologies": [],
-    "liveUrl": null,
-    "githubUrl": null,
+    "title": "Zain JO Landing Page",
+    "description": "Responsive landing page built with modern UI and clean layout.",
+    "image": "/images/zain.png",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "liveUrl": "https://zain-landing-page.vercel.app",
+    "githubUrl": "https://github.com/Nazzal-Solo/Zain-Landing-Page",
     "category": "Frontend",
     "featured": false,
-    "comingSoon": true
+    "comingSoon": false
   }
 ]

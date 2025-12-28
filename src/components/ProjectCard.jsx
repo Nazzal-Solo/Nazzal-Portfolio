@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Eye } from "lucide-react";
+import ProjectDetailsModal from "./ProjectDetailsModal";
 
 const ProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -34,21 +36,35 @@ const ProjectCard = ({ project, index }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
-      className="card card-hover overflow-hidden group"
+      className="card card-hover overflow-hidden group flex flex-col h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Project Image */}
       <div className="relative overflow-hidden">
-        <motion.img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-40 sm:h-48 object-cover"
-          variants={imageVariants}
-          initial="rest"
-          animate={isHovered ? "hover" : "rest"}
-          transition={{ duration: 0.3 }}
-        />
+        {project.image ? (
+          <motion.img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-40 sm:h-48 object-cover"
+            variants={imageVariants}
+            initial="rest"
+            animate={isHovered ? "hover" : "rest"}
+            transition={{ duration: 0.3 }}
+          />
+        ) : (
+          <motion.div
+            className="w-full h-40 sm:h-48 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/30 dark:to-primary-800/30 flex items-center justify-center"
+            variants={imageVariants}
+            initial="rest"
+            animate={isHovered ? "hover" : "rest"}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="text-primary-600 dark:text-primary-400 text-4xl font-bold opacity-50">
+              {project.title.charAt(0)}
+            </div>
+          </motion.div>
+        )}
 
         {/* Overlay */}
         <motion.div
@@ -100,13 +116,14 @@ const ProjectCard = ({ project, index }) => {
 
       {/* Project Content */}
       {!project.comingSoon ? (
-        <div className="p-4 sm:p-6">
+        <div className="p-4 sm:p-6 flex flex-col flex-grow">
           <div className="flex items-start justify-between mb-2 sm:mb-3">
-            <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200 pr-2">
+            <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200 pr-2 flex-1">
               {project.title}
             </h3>
             <motion.button
-              className="p-1 text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex-shrink-0"
+              onClick={() => setIsModalOpen(true)}
+              className="p-1 text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex-shrink-0 cursor-pointer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label={`View details of ${project.title}`}
@@ -115,12 +132,12 @@ const ProjectCard = ({ project, index }) => {
             </motion.button>
           </div>
 
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mb-3 sm:mb-4 line-clamp-3 min-h-[3.75rem] sm:min-h-[4.5rem]">
             {project.description}
           </p>
 
           {/* Tech Stack */}
-          <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+          <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4 min-h-[2rem]">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
@@ -131,8 +148,8 @@ const ProjectCard = ({ project, index }) => {
             ))}
           </div>
 
-          {/* Project Links */}
-          <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-1 sm:space-y-0">
+          {/* Project Links - Always at bottom */}
+          <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-1 sm:space-y-0 mt-auto">
             {project.liveUrl && (
               <motion.a
                 href={project.liveUrl}
@@ -168,6 +185,13 @@ const ProjectCard = ({ project, index }) => {
           </div>
         </div>
       )}
+
+      {/* Project Details Modal */}
+      <ProjectDetailsModal
+        project={project}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </motion.div>
   );
 };

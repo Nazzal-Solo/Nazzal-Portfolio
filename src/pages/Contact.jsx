@@ -13,9 +13,11 @@ import {
 import PageBackground from "../components/PageBackground";
 import SplashCursor from "../components/SplashCursor";
 import { usePerformance } from "../contexts/PerformanceContext";
+import { useCursor } from "../contexts/CursorContext";
 
 const Contact = () => {
   const { currentTier } = usePerformance();
+  const { isEnabled: isCursorEnabled } = useCursor();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [copied, setCopied] = useState({ email: false, phone: false });
@@ -122,7 +124,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-16 relative">
       {/* SplashCursor Effect */}
-      <SplashCursor key={`splash-${currentTier}`} />
+      {isCursorEnabled && <SplashCursor key={`splash-${currentTier}`} />}
 
       {/* Page Background */}
       <PageBackground variant="contact" opacity={0.08} />

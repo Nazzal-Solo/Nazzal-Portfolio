@@ -13,10 +13,12 @@ import PageBackground from "../components/PageBackground";
 import SplashCursor from "../components/SplashCursor";
 import OptimizedImage from "../components/OptimizedImage";
 import { usePerformance } from "../contexts/PerformanceContext";
+import { useCursor } from "../contexts/CursorContext";
 import { usePerformanceSettings } from "../hooks/usePerformanceSettings";
 
 const About = () => {
   const { currentTier } = usePerformance();
+  const { isEnabled: isCursorEnabled } = useCursor();
   const { getMotionVariants, isLowPerformance } = usePerformanceSettings();
 
   const containerVariants = {
@@ -130,7 +132,7 @@ const About = () => {
   return (
     <div className="min-h-screen pt-16 relative">
       {/* SplashCursor Effect */}
-      <SplashCursor key={`splash-${currentTier}`} />
+      {isCursorEnabled && <SplashCursor key={`splash-${currentTier}`} />}
 
       {/* Page Background */}
       <PageBackground variant="about" opacity={0.08} />

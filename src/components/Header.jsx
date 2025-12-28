@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, MousePointer2 } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import PerformanceSettingsButton from "./PerformanceSettingsButton";
 import PerformanceMonitor from "./PerformanceMonitor";
 import OptimizedImage from "./OptimizedImage";
+import { useCursor } from "../contexts/CursorContext";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,6 +14,7 @@ const Header = () => {
   const location = useLocation();
   const mobileMenuRef = useRef(null);
   const tabletMenuRef = useRef(null);
+  const { isEnabled: isCursorEnabled, toggleCursor } = useCursor();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -113,6 +115,22 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
             <PerformanceSettingsButton />
             <motion.button
+              onClick={toggleCursor}
+              className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              aria-label={isCursorEnabled ? "Disable splash cursor" : "Enable splash cursor"}
+              title={isCursorEnabled ? "Splash Cursor: ON" : "Splash Cursor: OFF"}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <MousePointer2
+                className={`w-4 h-4 xl:w-5 xl:h-5 transition-colors ${
+                  isCursorEnabled
+                    ? "text-primary-600 dark:text-primary-400"
+                    : "text-neutral-500 dark:text-neutral-400"
+                }`}
+              />
+            </motion.button>
+            <motion.button
               onClick={handleDownloadCV}
               className="btn-primary flex items-center space-x-2 text-xs xl:text-sm px-3 xl:px-4 py-2"
               whileHover={{ scale: 1.05 }}
@@ -191,6 +209,24 @@ const Header = () => {
                 <div className="mt-3 sm:mt-4 space-y-2">
                   <PerformanceSettingsButton className="w-full justify-center" />
                   <motion.button
+                    onClick={toggleCursor}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors duration-200"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label={isCursorEnabled ? "Disable splash cursor" : "Enable splash cursor"}
+                  >
+                    <MousePointer2
+                      className={`w-4 h-4 ${
+                        isCursorEnabled
+                          ? "text-primary-600 dark:text-primary-400"
+                          : "text-neutral-500 dark:text-neutral-400"
+                      }`}
+                    />
+                    <span className="text-neutral-700 dark:text-neutral-300">
+                      {isCursorEnabled ? "Splash Cursor: ON" : "Splash Cursor: OFF"}
+                    </span>
+                  </motion.button>
+                  <motion.button
                     onClick={handleDownloadCV}
                     className="w-full btn-primary flex items-center justify-center space-x-2 text-sm py-2.5"
                     whileHover={{ scale: 1.02 }}
@@ -233,6 +269,24 @@ const Header = () => {
                 ))}
                 <div className="mt-4 space-y-2">
                   <PerformanceSettingsButton className="w-full justify-center" />
+                  <motion.button
+                    onClick={toggleCursor}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 text-sm font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors duration-200"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label={isCursorEnabled ? "Disable splash cursor" : "Enable splash cursor"}
+                  >
+                    <MousePointer2
+                      className={`w-4 h-4 ${
+                        isCursorEnabled
+                          ? "text-primary-600 dark:text-primary-400"
+                          : "text-neutral-500 dark:text-neutral-400"
+                      }`}
+                    />
+                    <span className="text-neutral-700 dark:text-neutral-300">
+                      {isCursorEnabled ? "Splash Cursor: ON" : "Splash Cursor: OFF"}
+                    </span>
+                  </motion.button>
                   <motion.button
                     onClick={handleDownloadCV}
                     className="w-full btn-primary flex items-center justify-center space-x-2 text-sm py-2.5"

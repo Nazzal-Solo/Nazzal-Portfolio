@@ -5,10 +5,12 @@ import { Calendar, Clock, ArrowLeft, Tag, BookOpen } from "lucide-react";
 import PageBackground from "../components/PageBackground";
 import SplashCursor from "../components/SplashCursor";
 import { usePerformance } from "../contexts/PerformanceContext";
+import { useCursor } from "../contexts/CursorContext";
 
 const BlogPost = () => {
   const { id } = useParams();
   const { currentTier } = usePerformance();
+  const { isEnabled: isCursorEnabled } = useCursor();
   const [blogPost, setBlogPost] = useState(null);
 
   // Function to calculate read time based on content
@@ -432,7 +434,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen pt-16 relative">
       {/* SplashCursor Effect */}
-      <SplashCursor key={`splash-${currentTier}`} />
+      {isCursorEnabled && <SplashCursor key={`splash-${currentTier}`} />}
 
       {/* Page Background */}
       <PageBackground variant="blog" opacity={0.08} />

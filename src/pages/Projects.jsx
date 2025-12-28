@@ -6,9 +6,11 @@ import projectsData from "../data/projects.json";
 import PageBackground from "../components/PageBackground";
 import SplashCursor from "../components/SplashCursor";
 import { usePerformance } from "../contexts/PerformanceContext";
+import { useCursor } from "../contexts/CursorContext";
 
 const Projects = () => {
   const { currentTier } = usePerformance();
+  const { isEnabled: isCursorEnabled } = useCursor();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [viewMode, setViewMode] = useState("grid");
 
@@ -58,7 +60,7 @@ const Projects = () => {
   return (
     <div className="min-h-screen pt-16 relative">
       {/* SplashCursor Effect */}
-      <SplashCursor key={`splash-${currentTier}`} />
+      {isCursorEnabled && <SplashCursor key={`splash-${currentTier}`} />}
 
       {/* Page Background */}
       <PageBackground variant="projects" opacity={0.08} />
@@ -205,11 +207,19 @@ const Projects = () => {
                     >
                       <div className="flex flex-col sm:flex-row">
                         <div className="sm:w-1/3">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-48 sm:h-full object-cover"
-                          />
+                          {project.image ? (
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full h-48 sm:h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-48 sm:h-full bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/30 dark:to-primary-800/30 flex items-center justify-center">
+                              <div className="text-primary-600 dark:text-primary-400 text-4xl font-bold opacity-50">
+                                {project.title.charAt(0)}
+                              </div>
+                            </div>
+                          )}
                         </div>
                         <div className="sm:w-2/3 p-4 sm:p-6">
                           <div className="flex items-start justify-between mb-3 sm:mb-4">
