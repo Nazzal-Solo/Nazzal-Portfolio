@@ -197,18 +197,19 @@ const About = () => {
                   <div className="flex items-center justify-center md:justify-start space-x-3 sm:space-x-4 text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400">
                     <Calendar className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                     <span className="text-center md:text-left">
-                      Teaching Assistant at MERAKI JO
+                      Technical Mentor – Full Stack Development at MERAKI Academy
                     </span>
                   </div>
                 </div>
 
                 <div className="space-y-4 sm:space-y-6 md:space-y-6 mb-6 sm:mb-8 md:mb-10">
                   <p className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    I'm a passionate MERN & PERN stack developer with expertise
-                    in building exceptional web applications using modern
-                    technologies. Currently working as a Teaching Assistant at
-                    MERAKI JO, where I help mentor the next generation of
-                    developers while continuing to grow my own technical skills.
+                    I'm a Full Stack Developer with hands-on experience building
+                    real production systems, including automated grading platforms,
+                    internal dashboards, and scalable full-stack applications. Currently
+                    working as a Technical Mentor at MERAKI Academy, where I mentor
+                    50+ developers on full-stack projects, code quality, and
+                    problem-solving.
                   </p>
 
                   <p className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
