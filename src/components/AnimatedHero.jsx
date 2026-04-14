@@ -126,10 +126,7 @@ const AnimatedHero = () => {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl sm:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2"
           >
-            Passionate MERN & PERN stack developer crafting exceptional web
-            applications with modern technologies. Currently working as a
-            Teaching Assistant at MERAKI JO, dedicated to clean code, innovative
-            solutions, and mentoring the next generation of developers.
+            Full Stack Developer specializing in MERN & PERN stacks, building scalable and high-performance web applications. Focused on clean architecture, problem-solving, and delivering modern, impactful solutions.
           </motion.p>
 
           {/* CTA Buttons */}

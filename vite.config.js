@@ -2,21 +2,30 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
+  // IMPORTANT: Do NOT use port 3000 (Vercel uses it)
   server: {
-    port: 3000,
-    open: true,
+    port: 5173,
+    open: false,
   },
+
+  preview: {
+    port: 4173,
+  },
+
   build: {
     outDir: "dist",
-    sourcemap: false, // Disable sourcemaps for production
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
+
     rollupOptions: {
       output: {
         manualChunks: {
@@ -28,7 +37,7 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1000,
   },
-  base: "/", // Ensure relative paths for deployment
+
+  base: "/",
 });

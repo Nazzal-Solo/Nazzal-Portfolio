@@ -81,10 +81,7 @@ const Home = () => {
                 variants={itemVariants}
                 className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl sm:max-w-4xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2"
               >
-                I'm a passionate MERN & PERN stack developer currently working
-                as a Teaching Assistant at MERAKI JO. I love turning complex
-                problems into simple, beautiful, and intuitive solutions while
-                mentoring the next generation of developers.
+                Full Stack Developer specializing in MERN & PERN stacks, building scalable and high-performance web applications. Focused on clean architecture, problem-solving, and delivering modern, impactful solutions.
               </motion.p>
 
               <motion.div

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "nodemon src/server.cjs",
     "build": "vite build",
     "preview": "vite preview",
     "start": "vite preview --port 3000 --host",
@@ -13,8 +14,12 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "framer-motion": "^10.16.5",
     "lucide-react": "^0.294.0",
+    "nodemailer": "^8.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",

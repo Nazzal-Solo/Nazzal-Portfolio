@@ -72,8 +72,8 @@ const About = () => {
 
   const experience = [
     {
-      year: "Jan 2025 - Present",
-      title: "Teaching Assistant",
+      year: "Jan 2025 - Feb 2026",
+      title: "Technical mentor | Full stack developer",
       company: "MERAKI JO",
       description:
         "Mentoring students in full-stack development, helping them master MERN & PERN stack technologies, and providing guidance on modern web development practices.",
@@ -197,28 +197,22 @@ const About = () => {
                   <div className="flex items-center justify-center md:justify-start space-x-3 sm:space-x-4 text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400">
                     <Calendar className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                     <span className="text-center md:text-left">
-                      Technical Mentor – Full Stack Development at MERAKI Academy
+                      Full stack developer | Software engineer
                     </span>
                   </div>
                 </div>
 
                 <div className="space-y-4 sm:space-y-6 md:space-y-6 mb-6 sm:mb-8 md:mb-10">
                   <p className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    I'm a Full Stack Developer with hands-on experience building
-                    real production systems, including automated grading platforms,
-                    internal dashboards, and scalable full-stack applications. Currently
-                    working as a Technical Mentor at MERAKI Academy, where I mentor
-                    50+ developers on full-stack projects, code quality, and
-                    problem-solving.
+                    I'm a full stack developer focused on building scalable and maintainable web applications with modern JavaScript
+                    technologies. Strong expertise in backend development, RESTful APIs, and system design, with an emphasis on
+                    performance, security, and clean architecture.
+                    Adept at translating business requirements into efficient technical solutions, with experience across the full
+                    development lifecycle. Also experienced in mentoring developers and driving improvements in code quality and
+                    engineering practices.
                   </p>
 
-                  <p className="text-sm xs:text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    My professional philosophy centers around clean code,
-                    continuous learning, and knowledge sharing. I believe in
-                    creating scalable, maintainable solutions while fostering a
-                    collaborative environment where both students and colleagues
-                    can thrive and grow together.
-                  </p>
+                  
                 </div>
 
                 <motion.button

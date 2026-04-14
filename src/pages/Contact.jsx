@@ -32,19 +32,27 @@ const Contact = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
-
+  
     try {
-      // Simulate API call - replace with actual form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // For demo purposes, we'll just show success
-      // In real implementation, you would:
-      // 1. Send data to Formspree, Netlify Forms, or your backend
-      // 2. Handle the response appropriately
-
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      const text = await response.text();
+      const result = text ? JSON.parse(text) : {};
+  
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to send message");
+      }
+  
       setSubmitStatus("success");
       reset();
     } catch (error) {
+      console.error(error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -351,11 +359,10 @@ const Contact = () => {
                       <CardComponent
                         key={info.title}
                         href={info.clickable ? info.href : undefined}
-                        className={`card p-6 flex items-center space-x-4 ${
-                          info.clickable
-                            ? "cursor-pointer hover:shadow-lg transition-all duration-200"
-                            : ""
-                        }`}
+                        className={`card p-6 flex items-center space-x-4 ${info.clickable
+                          ? "cursor-pointer hover:shadow-lg transition-all duration-200"
+                          : ""
+                          }`}
                         whileHover={{ scale: 1.02, y: -2 }}
                         target={info.clickable ? "_blank" : undefined}
                         rel={info.clickable ? "noopener noreferrer" : undefined}
