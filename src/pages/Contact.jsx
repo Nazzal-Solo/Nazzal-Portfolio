@@ -41,19 +41,22 @@ const Contact = () => {
         },
         body: JSON.stringify(data),
       });
-      
+  
       const raw = await response.text();
       let result = {};
-      
+  
       try {
         result = raw ? JSON.parse(raw) : {};
       } catch {
         throw new Error(raw || "Server returned an invalid response");
       }
-      
+  
       if (!response.ok) {
         throw new Error(result.message || "Failed to send message");
       }
+  
+      setSubmitStatus("success");
+      reset();
     } catch (error) {
       console.error(error);
       setSubmitStatus("error");
