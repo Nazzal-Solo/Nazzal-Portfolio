@@ -32,7 +32,7 @@ const Contact = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
-   
+  
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -41,16 +41,19 @@ const Contact = () => {
         },
         body: JSON.stringify(data),
       });
-  
-      const text = await response.text();
-      const result = text ? JSON.parse(text) : {};
-  
+      
+      const raw = await response.text();
+      let result = {};
+      
+      try {
+        result = raw ? JSON.parse(raw) : {};
+      } catch {
+        throw new Error(raw || "Server returned an invalid response");
+      }
+      
       if (!response.ok) {
         throw new Error(result.message || "Failed to send message");
       }
-  
-      setSubmitStatus("success");
-      reset();
     } catch (error) {
       console.error(error);
       setSubmitStatus("error");
