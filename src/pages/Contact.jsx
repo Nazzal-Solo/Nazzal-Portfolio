@@ -32,7 +32,7 @@ const Contact = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
-  
+   
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
