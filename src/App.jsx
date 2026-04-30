@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Suspense, lazy } from "react";
@@ -102,11 +103,15 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <PerformanceProvider>
-      <CursorProvider>
-        <AppContent />
-      </CursorProvider>
-    </PerformanceProvider>
+    <>
+      {/* Vercel Web Analytics: mounted once at app root; records traffic on Vercel production only */}
+      <Analytics />
+      <PerformanceProvider>
+        <CursorProvider>
+          <AppContent />
+        </CursorProvider>
+      </PerformanceProvider>
+    </>
   );
 };
 
